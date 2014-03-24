@@ -27,4 +27,4 @@ In the end top k and bottom k skills across all these profiles are computed and 
 
 
 #USAGE 
-ruby Linkedin_Profile_Scrapper.rb <CONFIG_FILE> <INPUT FILE LOCATION> <OUTPUT FILE LOCATION>
+ruby Linkedin_Profile_Scrapper.rb   [CONFIG_FILE]   [INPUT FILE LOCATION]   [OUTPUT FILE LOCATION]
