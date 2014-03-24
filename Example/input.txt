@@ -1,4 +1,2 @@
-CEO
-CTO
 Director of Engineering
-Devops Engineer
+VP of sales
