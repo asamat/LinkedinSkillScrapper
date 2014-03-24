@@ -28,3 +28,5 @@ In the end top k and bottom k skills across all these profiles are computed and 
 
 #USAGE 
 ruby Linkedin_Profile_Scrapper.rb   [CONFIG_FILE]   [INPUT FILE LOCATION]   [OUTPUT FILE LOCATION]
+
+* See Example/input.txt to see input file format
