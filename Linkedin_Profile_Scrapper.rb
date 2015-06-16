@@ -80,9 +80,9 @@ class LinkedinSearch
       def self.parse_profile_data(url,keyword,count)
         if @@PROFILES_DONE[url].nil?  and count<@@PROFILES_PER_KEYWORD
           data=Nokogiri::HTML(open(url))
-          skills=data.css('#content').css('#profile-skills').css('.jellybean').text
-          skills=skills.split(/\n+/).map{|elem| elem.gsub(/\s+/, "")}
+          skills=data.css('#profile-skills').css('.endorse-item-name-text')
           skills.each do |skill|
+            skill=skill.text
             if !skill.empty?
               @@USER_SKILLS[skill.to_s.downcase]= (@@USER_SKILLS[skill.to_s.downcase].to_i) + 1
             end 
@@ -121,8 +121,8 @@ class LinkedinSearch
 
         ans_arr=@@USER_SKILLS.sort_by {|k, v| v}
         ans_arr=ans_arr.reverse
-        top_skills=ans_arr.empty? ? []:ans_arr[0,top_k].map {|k,v| k }
-        bottom_skills=ans_arr.empty? ? []:ans_arr[-bottom_k,bottom_k].map {|k,v| k }
+        top_skills=ans_arr.empty? ? []:ans_arr[0,top_k].map {|k,v| k + " " + v.to_s}
+        bottom_skills=ans_arr.empty? ? []:ans_arr[-bottom_k,bottom_k].map {|k,v| k + " " + v.to_s}
         File.open(@@OUTPUT_FILE, "w+") do |f|
           f.puts("Top #{top_k} skills\n")
           f.puts(top_skills)
